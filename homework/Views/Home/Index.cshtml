@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    @model Tuple<double,double>
+<h2>Calculate</h2>
+<form asp-action="Index" method="post">
+    <div>
+        <lable for ="first">First number</lable>
+        <input type="number" name="first" value="@Model"/>
+    </div>
+    <div>
+        <label for="second"> Second number
+        </label>
+        <input type="number" name="second" value="@Model"/>
+    </div>
+    <button type ="submit">Submit</button>
+</form>
+    
+    
+
+
+@if (Model != null)
+{
+   <h2>Result</h2> 
+   <ul>
+       <li>@Model.Item1+@Model.Item2=@(Model.Item1+Model.Item2)</li>
+        <li>@Model.Item1-@Model.Item2=@(Model.Item1-Model.Item2)</li>
+         <li>@Model.Item1*@Model.Item2=@(Model.Item1*Model.Item2)</li>
+         @if(Model.Item2!=0)
+        {
+            <li>@Model.Item1 / @Model.Item2= @(Model.Item1/Model.Item2)</li>
+        }
+        else
+        {
+            <li> Cannot divide by zero</li>
+        }
+    </ul>
+}
+</div>
